@@ -12,10 +12,15 @@
 
 	function showLightBox() {
 		lightBox.classList.add('show-lightbox');
+		video.play();
 	}
 
 	function hideLightBox() {
 		lightBox.classList.remove('show-lightbox');
+		// rewind video
+		// pause it
+		video.currentTime = 0;
+		video.pause();
 	}
 
 	sheilds.forEach(sheild => sheild.addEventListener("click", showLightBox));
