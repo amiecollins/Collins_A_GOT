@@ -8,9 +8,16 @@
 
 	const sheilds = document.querySelectorAll(".sigil-container"),
 		lightBox = document.querySelector(".lightbox"),
-		video = document.querySelector("video");
+		video = document.querySelector("video"),
+		closeLB = document.querySelector(".lightbox-close"),
+		banner = document.querySelector("#houseImages");
 
 	function showLightBox() {
+		// Grab right video source
+		var targetHouse = this.className.split(" ")[1];
+		let targetSrc = targetHouse.charAt(0).toUpperCase() + targetHouse.slice(1);
+		video.src = `video/House-${targetSrc}.mp4`;
+
 		lightBox.classList.add('show-lightbox');
 		video.play();
 	}
@@ -23,8 +30,15 @@
 		video.pause();
 	}
 
-	sheilds.forEach(sheild => sheild.addEventListener("click", showLightBox));
+	function animateBanner(callback) {
+		banner.style.right = this.dataset.offset * 600 + "px";
+		callback();
+	}
+
+	sheilds.forEach(sheild => sheild.addEventListener("click", animateBanner));
 
 	video.addEventListener("ended", hideLightBox);
+
+	closeLB.addEventListener("click", hideLightBox);
 
 })();
