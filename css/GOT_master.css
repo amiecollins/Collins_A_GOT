@@ -33,10 +33,11 @@ main {
 	height:360px;
 	background-color:grey;
 	margin:0 auto;
-	/*overflow:hidden;*/
+	overflow:hidden;
 }
 
-#houseImages { position:relative; width:4000px; transition: all .5s; }
+#houseImages { position:relative; width:4000px; }
+
 #houseImages img { float:left; }
 
 #bottomNav { margin-top:30px; }
@@ -113,9 +114,17 @@ main {
 	display: block;
 }
 
+.lightbox-close {
+	position: absolute;
+	color: white;
+	right: 12px;
+	top: 12px;
+	cursor: pointer;
+	font-size: 2em;
+}
 
 video {
 	width: 80%;
-	margin-top: 10%;
+	margin-top: 5%;
 	border: thin solid #949393;
 }
