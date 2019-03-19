@@ -12,9 +12,9 @@
 		closeLB = document.querySelector(".lightbox-close"),
 		banner = document.querySelector("#houseImages");
 
-	function showLightBox() {
+	function showLightBox(sheild) {
 		// Grab right video source
-		var targetHouse = this.className.split(" ")[1];
+		var targetHouse = sheild.className.split(" ")[1];
 		let targetSrc = targetHouse.charAt(0).toUpperCase() + targetHouse.slice(1);
 		video.src = `video/House-${targetSrc}.mp4`;
 
@@ -30,9 +30,9 @@
 		video.pause();
 	}
 
-	function animateBanner(callback) {
-		banner.style.right = this.dataset.offset * 600 + "px";
-		callback();
+	function animateBanner() {
+		//banner.style.right = this.dataset.offset * 600;
+		TweenMax.to(banner, 0.8, {right: this.dataset.offset * 600, onComplete:showLightBox, onCompleteParams: [this]});
 	}
 
 	sheilds.forEach(sheild => sheild.addEventListener("click", animateBanner));
